@@ -1,0 +1,39 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 20px;
+    background-color: #f0f0f0; /* Adding a background color to the body */
+}
+
+.form {
+    background-color: #ffffff;
+    color: #333;
+    width: 80%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin: auto;
+    margin-top: 50px;
+    overflow-x: auto; /* Adding horizontal scroll if needed */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #7b236f;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #debbbb;
+}
+
+/* Optional: Highlight rows on hover */
+tr:hover {
+    background-color: #bbd6f1;
+}

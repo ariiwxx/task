@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #background {
+      background-image: url('фон.jpeg');
+      background-size: cover;
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      animation: backgroundAnimation 10s linear infinite;
+    }
+
+    @keyframes backgroundAnimation {
+      from { background-position: 0 0; }
+      to { background-position: 100% 100%; }
+    }
+
+    .pokemon {
+      position: absolute;
+      width: 96px;
+      height: 96px;
+      cursor: pointer;
+    }
+
+    #pokemon1 {
+      background-image: url('https://img.pokemondb.net/sprites/ruby-sapphire/normal/gligar.png');
+      top: 50px;
+      left: 50px;
+    }
+
+    #pokemon2 {
+      background-image: url('https://img.pokemondb.net/sprites/black-white/normal/entei.png');
+      top: 150px;
+      left: 150px;
+    }
+  </style>
+</head>
+<body>
+  <div id="background"></div>
+  <div id="pokemon1" class="pokemon"></div>
+  <div id="pokemon2" class="pokemon"></div>
+
+  <script>
+    const pokemon1 = document.getElementById('pokemon1');
+    const pokemon2 = document.getElementById('pokemon2');
+
+    setInterval(moveRandomly.bind(null, pokemon1), 1000);
+    setInterval(moveRandomly.bind(null, pokemon2), 1000);
+
+    function moveRandomly(pokemon) {
+      const randomX = Math.random() * (window.innerWidth - 96);
+      const randomY = Math.random() * (window.innerHeight - 96);
+
+      pokemon.style.left = `${randomX}px`;
+      pokemon.style.top = `${randomY}px`;
+    }
+
+    function checkCollision() {
+      const rect1 = pokemon1.getBoundingClientRect();
+      const rect2 = pokemon2.getBoundingClientRect();
+
+      if (
+        rect1.left < rect2.left + rect2.width &&
+        rect1.left + rect1.width > rect2.left &&
+        rect1.top < rect2.top + rect2.height &&
+        rect1.top + rect1.height > rect2.top
+      ) {
+        moveRandomly(pokemon1);
+        moveRandomly(pokemon2);
+      }
+    }
+  </script>
+</body>
+</html>
